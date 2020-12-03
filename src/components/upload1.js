@@ -128,6 +128,10 @@ export default function Uploader() {
     useEffect(() => {
         window.addEventListener('online', HandleOnline, false);
         window.addEventListener('offline', HandleOffline, false);
+        return () => {
+            window.removeEventListener('online', HandleOnline, false);
+            window.removeEventListener('offline', HandleOffline, false);
+        };
     }, [HandleOnline, HandleOffline]);
 
     return <div style={{width: '500px'}}>
