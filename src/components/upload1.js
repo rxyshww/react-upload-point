@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { memo, useState, useCallback, useEffect } from 'react';
 import { Upload, Button, Progress, Tag } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import SparkMD5 from 'spark-md5';
@@ -34,7 +34,7 @@ const uploadProps = {
 };
 
 
-export default function Uploader() {
+export default memo(function Uploader() {
     let [url, setUrl] = useState('');
     let [suffix, setSuffix] = useState('');
     let [progress, setProgress] = useState(0);
@@ -154,4 +154,4 @@ export default function Uploader() {
         {   ['png', 'gif', 'jpg', 'jpeg'].includes(suffix) ? <img src={url} alt=""/> : null}
 
     </div>
-}
+});
